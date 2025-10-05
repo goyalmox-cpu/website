@@ -18,12 +18,29 @@
     box-sizing: border-box;
 }
 
+/* Smooth scrolling and performance optimizations */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Hardware acceleration for better performance */
+*,
+*::before,
+*::after {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 body {
     font-family: 'Rajdhani', sans-serif;
     background: var(--deep-black);
     color: var(--neon-green);
     overflow-x: hidden;
     position: relative;
+    /* Optimize rendering */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
 }
 
 /* Cyber Grid Background */
@@ -40,14 +57,18 @@ body {
     pointer-events: none;
     z-index: 0;
     animation: gridMove 20s linear infinite;
+    /* Hardware acceleration */
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
 }
 
 @keyframes gridMove {
     0% {
-        transform: perspective(500px) rotateX(60deg) translateY(0);
+        transform: perspective(500px) rotateX(60deg) translate3d(0, 0, 0);
     }
     100% {
-        transform: perspective(500px) rotateX(60deg) translateY(50px);
+        transform: perspective(500px) rotateX(60deg) translate3d(0, 50px, 0);
     }
 }
 
@@ -86,16 +107,20 @@ header .container {
 .logo-icon {
     font-size: 2rem;
     animation: pulse 2s ease-in-out infinite;
+    will-change: opacity, text-shadow;
+    transform: translate3d(0, 0, 0);
 }
 
 @keyframes pulse {
     0%, 100% {
         opacity: 1;
         text-shadow: 0 0 10px var(--neon-green), 0 0 20px var(--neon-green);
+        transform: scale3d(1, 1, 1);
     }
     50% {
         opacity: 0.7;
         text-shadow: 0 0 5px var(--neon-green);
+        transform: scale3d(0.98, 0.98, 1);
     }
 }
 
@@ -119,7 +144,8 @@ nav a {
     font-size: 1.1rem;
     letter-spacing: 2px;
     position: relative;
-    transition: all 0.3s ease;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1), text-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: color, text-shadow;
 }
 
 nav a::after {
@@ -130,8 +156,9 @@ nav a::after {
     width: 0;
     height: 2px;
     background: var(--cyber-green);
-    transition: width 0.3s ease;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 0 10px var(--cyber-green);
+    will-change: width;
 }
 
 nav a:hover::after {
@@ -154,20 +181,22 @@ nav a:hover {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate3d(-50%, -50%, 0);
     width: 800px;
     height: 800px;
     background: radial-gradient(circle, rgba(0, 255, 65, 0.1) 0%, transparent 70%);
     animation: heroGlow 5s ease-in-out infinite;
+    will-change: transform, opacity;
+    backface-visibility: hidden;
 }
 
 @keyframes heroGlow {
     0%, 100% {
-        transform: translate(-50%, -50%) scale(1);
+        transform: translate3d(-50%, -50%, 0) scale3d(1, 1, 1);
         opacity: 0.5;
     }
     50% {
-        transform: translate(-50%, -50%) scale(1.2);
+        transform: translate3d(-50%, -50%, 0) scale3d(1.2, 1.2, 1);
         opacity: 0.8;
     }
 }
@@ -192,23 +221,25 @@ nav a:hover {
         0 0 40px var(--cyber-green);
     animation: glitchText 3s infinite;
     margin-bottom: 20px;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
 }
 
 @keyframes glitchText {
     0%, 90%, 100% {
-        transform: translate(0);
+        transform: translate3d(0, 0, 0);
     }
     20% {
-        transform: translate(-2px, 2px);
+        transform: translate3d(-2px, 2px, 0);
     }
     40% {
-        transform: translate(-2px, -2px);
+        transform: translate3d(-2px, -2px, 0);
     }
     60% {
-        transform: translate(2px, 2px);
+        transform: translate3d(2px, 2px, 0);
     }
     80% {
-        transform: translate(2px, -2px);
+        transform: translate3d(2px, -2px, 0);
     }
 }
 
@@ -232,7 +263,9 @@ nav a:hover {
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: color, box-shadow;
+    transform: translate3d(0, 0, 0);
 }
 
 .cta-button::before {
@@ -243,8 +276,10 @@ nav a:hover {
     width: 100%;
     height: 100%;
     background: var(--neon-green);
-    transition: left 0.3s ease;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     z-index: -1;
+    will-change: left;
+    transform: translate3d(0, 0, 0);
 }
 
 .cta-button:hover::before {
@@ -295,8 +330,14 @@ nav a:hover {
     border-radius: 15px;
     overflow: hidden;
     position: relative;
-    transition: all 0.3s ease;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    /* Performance optimizations */
+    contain: layout style paint;
+    isolation: isolate;
 }
 
 .sneaker-card::before {
@@ -313,11 +354,12 @@ nav a:hover {
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity;
 }
 
 .sneaker-card:hover {
-    transform: translateY(-10px);
+    transform: translate3d(0, -10px, 0);
     box-shadow: 0 10px 40px rgba(0, 255, 65, 0.3);
 }
 
@@ -334,12 +376,13 @@ nav a:hover {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate3d(-50%, -50%, 0);
     width: 300px;
     height: 300px;
     background: radial-gradient(circle, rgba(0, 255, 65, 0.1) 0%, transparent 70%);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: opacity;
 }
 
 .sneaker-card:hover .card-glow {
@@ -353,18 +396,23 @@ nav a:hover {
     border-radius: 10px;
     margin-bottom: 20px;
     overflow: hidden;
+    /* Performance optimization for images */
+    contain: layout paint;
 }
 
 .sneaker-img {
     width: 100%;
     height: auto;
     display: block;
-    transition: transform 0.3s ease;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     filter: drop-shadow(0 5px 15px rgba(0, 255, 65, 0.3));
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
 }
 
 .sneaker-card:hover .sneaker-img {
-    transform: scale(1.1) rotate(-5deg);
+    transform: scale3d(1.1, 1.1, 1) rotate(-5deg);
 }
 
 .scan-line {
@@ -376,6 +424,8 @@ nav a:hover {
     background: linear-gradient(90deg, transparent, var(--cyber-green), transparent);
     opacity: 0;
     animation: scan 2s ease-in-out infinite;
+    will-change: top;
+    transform: translate3d(0, 0, 0);
 }
 
 .sneaker-card:hover .scan-line {
@@ -438,8 +488,10 @@ nav a:hover {
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border-radius: 5px;
+    will-change: box-shadow;
+    transform: translate3d(0, 0, 0);
 }
 
 .buy-btn::before {
@@ -447,12 +499,13 @@ nav a:hover {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate3d(-50%, -50%, 0);
     width: 0;
     height: 0;
     border-radius: 50%;
     background: var(--cyber-green);
-    transition: width 0.3s ease, height 0.3s ease;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: width, height;
 }
 
 .buy-btn:hover::before {
@@ -515,6 +568,7 @@ nav a:hover {
         0 0 20px var(--cyber-green),
         0 0 30px var(--cyber-green);
     margin-bottom: 10px;
+    transform: translate3d(0, 0, 0);
 }
 
 .stat-label {
@@ -554,7 +608,8 @@ footer p {
     text-decoration: none;
     font-weight: 600;
     letter-spacing: 1px;
-    transition: all 0.3s ease;
+    transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1), text-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: color, text-shadow;
 }
 
 .social-links a:hover {
@@ -611,4 +666,54 @@ footer p {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--cyber-green);
+}
+
+/* ========================================
+   PERFORMANCE OPTIMIZATIONS
+   ======================================== */
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Optimize font rendering */
+body, button, input {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* GPU acceleration hints for critical elements */
+.hero,
+.sneaker-card,
+.cta-button,
+.buy-btn,
+nav a {
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+}
+
+/* Prevent layout shift */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Optimize repaints */
+header,
+footer {
+    contain: layout style;
+}
+
+/* Smooth transitions on interactive elements */
+a, button, .sneaker-card {
+    -webkit-tap-highlight-color: rgba(0, 255, 65, 0.2);
 }

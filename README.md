@@ -9,7 +9,8 @@ A futuristic sneaker showcase website with a cyberpunk green and black theme.
 - **Animated Grid Background**: Matrix-style grid animation
 - **Glitch Effects**: Cyberpunk glitch text animations
 - **Responsive Design**: Works on all devices
-- **Smooth Animations**: Professional transitions and effects
+- **Buttery Smooth 60 FPS Animations**: Fully optimized with hardware acceleration
+- **Performance Optimized**: RequestAnimationFrame, GPU acceleration, smooth interpolation
 
 ## 🖼️ Adding Your Sneaker Images
 
@@ -61,6 +62,19 @@ You can easily customize:
 - Colors in `styles.css` (see `:root` variables)
 - Sneaker information in `index.html`
 - Animation speeds and effects in `script.js`
+
+## ⚡ Performance
+
+All animations are **fully optimized** for smooth 60 FPS performance:
+- ✅ **Hardware Acceleration**: GPU-powered rendering
+- ✅ **RequestAnimationFrame**: Synchronized with display refresh
+- ✅ **Smooth Interpolation**: No jank or stuttering
+- ✅ **Optimized JavaScript**: Throttled events and proper cleanup
+- ✅ **CSS Performance**: Will-change hints and cubic-bezier easing
+
+For detailed optimization info, see:
+- **OPTIMIZATIONS_SUMMARY.md** - Quick overview
+- **PERFORMANCE.md** - Technical deep dive
 
 ## 🔮 Future Enhancements
 
