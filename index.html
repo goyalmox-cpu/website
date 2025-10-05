@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SneakerVerse - Premium Sneakers</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>SneakerVerse</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#collection">Collection</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">Step Into the Future</h1>
+                <p class="hero-subtitle">Discover the most innovative sneakers that blend style, comfort, and cutting-edge technology.</p>
+                <button class="cta-button">Explore Collection</button>
+            </div>
+            <div class="hero-sneaker">
+                <div class="sneaker-3d" id="main-sneaker">
+                    <div class="sneaker-body"></div>
+                    <div class="sneaker-sole"></div>
+                    <div class="sneaker-laces"></div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Collection Section -->
+    <section id="collection" class="collection">
+        <div class="container">
+            <h2 class="section-title">Featured Collection</h2>
+            <div class="sneaker-grid">
+                <div class="sneaker-card" data-delay="0">
+                    <div class="sneaker-image">
+                        <div class="sneaker-3d-mini sneaker-1">
+                            <div class="sneaker-body"></div>
+                            <div class="sneaker-sole"></div>
+                        </div>
+                    </div>
+                    <div class="sneaker-info">
+                        <h3>Air Max Pro</h3>
+                        <p>Revolutionary cushioning technology</p>
+                        <span class="price">$299</span>
+                    </div>
+                </div>
+                
+                <div class="sneaker-card" data-delay="200">
+                    <div class="sneaker-image">
+                        <div class="sneaker-3d-mini sneaker-2">
+                            <div class="sneaker-body"></div>
+                            <div class="sneaker-sole"></div>
+                        </div>
+                    </div>
+                    <div class="sneaker-info">
+                        <h3>Boost Elite</h3>
+                        <p>Energy return like never before</p>
+                        <span class="price">$349</span>
+                    </div>
+                </div>
+                
+                <div class="sneaker-card" data-delay="400">
+                    <div class="sneaker-image">
+                        <div class="sneaker-3d-mini sneaker-3">
+                            <div class="sneaker-body"></div>
+                            <div class="sneaker-sole"></div>
+                        </div>
+                    </div>
+                    <div class="sneaker-info">
+                        <h3>React Infinity</h3>
+                        <p>Unlimited comfort and style</p>
+                        <span class="price">$279</span>
+                    </div>
+                </div>
+                
+                <div class="sneaker-card" data-delay="600">
+                    <div class="sneaker-image">
+                        <div class="sneaker-3d-mini sneaker-4">
+                            <div class="sneaker-body"></div>
+                            <div class="sneaker-sole"></div>
+                        </div>
+                    </div>
+                    <div class="sneaker-info">
+                        <h3>Zoom Fly</h3>
+                        <p>Speed meets precision</p>
+                        <span class="price">$229</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Choose SneakerVerse?</h2>
+            <div class="features-grid">
+                <div class="feature-card" data-delay="0">
+                    <div class="feature-icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h3>Innovation</h3>
+                    <p>Cutting-edge technology meets timeless design in every pair.</p>
+                </div>
+                
+                <div class="feature-card" data-delay="200">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Quality</h3>
+                    <p>Premium materials and meticulous craftsmanship ensure durability.</p>
+                </div>
+                
+                <div class="feature-card" data-delay="400">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Comfort</h3>
+                    <p>Engineered for all-day comfort without compromising on style.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>About SneakerVerse</h2>
+                    <p>We're passionate about creating sneakers that don't just look amazing, but feel incredible too. Our team of designers and engineers work tirelessly to push the boundaries of what's possible in footwear.</p>
+                    <p>From the drawing board to your feet, every step of our process is designed to deliver the perfect blend of style, comfort, and performance.</p>
+                    <button class="cta-button">Learn More</button>
+                </div>
+                <div class="about-visual">
+                    <div class="floating-sneakers">
+                        <div class="floating-sneaker" style="--delay: 0s;">
+                            <div class="sneaker-3d-mini">
+                                <div class="sneaker-body"></div>
+                                <div class="sneaker-sole"></div>
+                            </div>
+                        </div>
+                        <div class="floating-sneaker" style="--delay: 1s;">
+                            <div class="sneaker-3d-mini">
+                                <div class="sneaker-body"></div>
+                                <div class="sneaker-sole"></div>
+                            </div>
+                        </div>
+                        <div class="floating-sneaker" style="--delay: 2s;">
+                            <div class="sneaker-3d-mini">
+                                <div class="sneaker-body"></div>
+                                <div class="sneaker-sole"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>SneakerVerse</h3>
+                    <p>Step into the future of footwear.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#collection">Collection</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 SneakerVerse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
