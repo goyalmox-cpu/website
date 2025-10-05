@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sneaker Lab</title>
+    <meta name="description" content="Scroll to explore sneakers with cinematic transitions" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+    <script defer src="./script.js"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <div class="brand">SneakerLab</div>
+        <nav class="nav">
+          <a href="#gallery">Models</a>
+          <a href="#features">Tech</a>
+          <a href="#cta" class="btn">Shop</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div class="container">
+          <h1 class="headline">Cinematic sneakers.<br />Driven by your scroll.</h1>
+          <p class="subhead">Fluid crossfades, 3D motion, dynamic color. Keep scrolling.</p>
+          <div class="scroll-indicator" aria-hidden="true">
+            <span>Scroll</span>
+            <div class="mouse"><div class="wheel"></div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" class="scroll-gallery" aria-label="Sneaker gallery">
+        <div class="stage" id="stage" role="img" aria-label="Sneaker showcase"></div>
+        <div class="stage-ui">
+          <div class="copy">
+            <h2 class="product-name" id="productName">Velocity X</h2>
+            <p class="product-desc" id="productDesc">Featherweight runner with spring-loaded rebound.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="features">
+        <div class="container grid">
+          <div class="card">
+            <h3>Reactive Foam</h3>
+            <p>Energy-return midsole adapts to your stride for all-day comfort.</p>
+          </div>
+          <div class="card">
+            <h3>WarpKnit Upper</h3>
+            <p>Breathable knit wraps your foot with seamless support.</p>
+          </div>
+          <div class="card">
+            <h3>GripFlow Outsole</h3>
+            <p>Multi-directional lugs deliver traction no matter the surface.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="cta" class="cta">
+        <div class="container">
+          <h2>Ready to move?</h2>
+          <p>Free shipping and 60-day trials on all models.</p>
+          <a class="btn btn-primary" href="#">Shop collection</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <span>© <span id="year"></span> SneakerLab</span>
+        <a href="#" class="link">Privacy</a>
+      </div>
+    </footer>
+  </body>
+</html>
