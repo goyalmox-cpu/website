@@ -34,7 +34,7 @@ function byId(id){ return document.getElementById(id); }
 
 function createCard(product){
   const card = document.createElement('article');
-  card.className = 'card';
+  card.className = 'card reveal';
 
   const media = document.createElement('div');
   media.className = 'card-media';
@@ -48,6 +48,7 @@ function createCard(product){
   img.alt = `${product.name} – ${product.colorway}`;
   img.src = product.image;
   img.onerror = () => { img.src = product.fallback; };
+  img.loading = 'lazy';
   media.appendChild(img);
 
   const body = document.createElement('div');
@@ -107,6 +108,23 @@ function init(){
     document.getElementById('catalog').scrollIntoView({ behavior: 'smooth' });
   });
   populate();
+
+  // Reveal-on-scroll using IntersectionObserver for smooth entrance
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!prefersReducedMotion && 'IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+  } else {
+    document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in-view'));
+  }
 }
 
 window.addEventListener('DOMContentLoaded', init);
